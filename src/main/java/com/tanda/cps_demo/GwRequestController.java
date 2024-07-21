@@ -1,5 +1,6 @@
 package com.tanda.cps_demo;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class GwRequestController {
     }
 
     @PostMapping("message")
-    public ResponseEntity<?> createGwRequest(@RequestBody GwRequest gwRequest) {
+    public ResponseEntity<?> createGwRequest(@Valid @RequestBody GwRequest gwRequest) {
         log.info("Composing kafka message");
 
 
