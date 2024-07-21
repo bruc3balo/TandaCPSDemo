@@ -11,6 +11,6 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:17
 
-COPY --from=build /app/target/cps_demo.jar /cps_demo.jar
+COPY --from=build /app/target/cps.jar /cps.jar
 
-ENTRYPOINT ["java", "-jar", "/cps_demo.jar"]
+ENTRYPOINT ["java", "-jar", "/cps.jar"]

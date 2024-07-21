@@ -7,6 +7,19 @@
 ### [Swagger documentation](http://localhost:6794/cps/swagger-ui/index.html)
 #### Click above to open open ai documentation
 
+### Sample request
+
+**POST URI:** http://localhost:6794/cps/swagger-ui/index.html#/gw-request-controller 
+
+Body: 
+```json
+{
+  "amount": 10,
+  "mobileNumber": 254728762287,
+  "id": "feb5e3f2-fbbc-4745-844c-ee37b546f627"
+}
+```
+
 # Kafka
 The application is dependant of kafka to function
 
@@ -43,7 +56,7 @@ docker compose -f payment-docker-compose.yaml logs -f
 The following environment variables need to be provided in order for the application to run smoothly.
 
 
-Application Environment variables
+[Application Environment variables](.env)
 ```.dotenv
 kafka.servers=
 ```
@@ -65,5 +78,8 @@ curl -f http://localhost:6794/cps/ping
 
 ##### Host
 ```bash
-docker exec tanda_payment_api curl -f http://localhost:6794/cps/ping
+docker exec cps_api curl -f http://localhost:6794/cps/ping
 ```
+
+
+
