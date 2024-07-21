@@ -60,7 +60,7 @@ mvn surefire:test
 #### B) Testing the api while running
 ##### Shell
 ```bash
-curl -f http://localhost:6793/payment-api/ping
+curl -f http://localhost:6794/cps/ping
 ```
 
 ##### Host
