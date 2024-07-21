@@ -11,7 +11,7 @@ services:
     ports:
       - "8080:8080"
     env_file:
-      - kafka.servers=kafka:9092
+      - .env
     networks:
       - tanda_network
     command: "java -jar /cps.jar"
