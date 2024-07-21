@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @Slf4j
@@ -25,11 +26,14 @@ public class GwRequestController {
     public ResponseEntity<?> createGwRequest(@RequestBody GwRequest gwRequest) {
         log.info("Composing kafka message");
 
+
+        AtomicReference<String> message = new AtomicReference<>();
+
         CompletableFuture<SendResult<String, GwRequest>> sendResultCompletableFuture = gwRequestKafkaTemplate
                 .send("gw_request", gwRequest)
-                .whenComplete((sendResult, throwable) -> log.info("Kafka message sent"))
+                .whenComplete((sendResult, throwable) -> message.set("Kafka message sent"))
                 .exceptionally(throwable -> {
-                    log.error(throwable.getMessage());
+                    message.set(throwable.getMessage());
                     return null;
                 });
 
