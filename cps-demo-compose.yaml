@@ -1,0 +1,21 @@
+services:
+
+  cps_api:
+    image: openjdk:17
+    container_name: cps_api
+    hostname: cps_api
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - kafka.servers=kafka:9092
+    networks:
+      - tanda_network
+    command: "java -jar /cps.jar"
+
+networks:
+  tanda_network:
+    external: true

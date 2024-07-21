@@ -1,0 +1,30 @@
+server:
+  port: 6794
+
+  servlet:
+    context-path: /${spring.application.name}
+
+spring:
+
+  application:
+    name: cps
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  kafka:
+    client-id: ${spring.application.name}-${random.int}
+    bootstrap-servers:
+      - ${kafka.servers}
+    properties:
+      topic:
+        auto:
+          create:
+            enable: true
+    producer:
+      bootstrap-servers:
+        - ${kafka.servers}
+
+kafka:
+  servers: kafka:9092
