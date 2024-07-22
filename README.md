@@ -29,25 +29,37 @@ Code changes will be picked up by building a new image or passing **--build** se
 
 Necessary health checks have been put in place to ensure container uptime and ease of debugging
 
-### Deploy Whole Infrastructure (For initial builds)
+### Step 1: Create Docker Network
+```bash
+docker network create tanda_network
+```
+
+### Step 2: Deploy Whole Infrastructure
+#### For initial build to create images i.e. No images build
 ```bash
 docker compose -f cps-demo-compose.yaml up --build -d
 ```
-
-### Prune The Whole Infrastructure
-```bash
-docker compose -f cps-demo-compose.yaml down -v   
-```
-
-### Start all containers without building image (After successful initial build)
+#### Start all containers without building image i.e. After successful initial build
 ```bash
 docker compose -f cps-demo-compose.yaml up -d
 ```
 
-
-### Watch Logs
+### Step 3: Watch Logs from all containers
 ```bash
-docker compose -f payment-docker-compose.yaml logs -f
+docker compose -f cps-demo-compose.yaml logs -f
+```
+
+### Step 4: Clean up
+
+#### Stop all containers without deleting volume
+```bash
+docker compose -f cps-demo-compose.yaml down
+```
+
+#### Prune The Whole Infrastructure
+
+```bash
+docker compose -f cps-demo-compose.yaml down -v   
 ```
 
 # Environment Variables
