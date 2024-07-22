@@ -1,9 +1,3 @@
-
-## Process Flow
-#### This was created with visual paradigm online
-
-![Transaction Process Flow](docs/sequence_diagram.png)
-
 ### [Swagger documentation](http://localhost:6794/cps/swagger-ui/index.html)
 #### Click above to open open ai documentation
 
